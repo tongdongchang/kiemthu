@@ -1,0 +1,570 @@
+/* HEADER SECTION STARTS */
+:root {
+  --ora: #ffc107;
+  --whi: #ffffff;
+  --bla: #000000;
+  --lig: #1d1d20;
+  --gr1: #a1a0a0;
+  --gr2: #e9e9e9;
+}
+
+    /* Chỉnh màu nền, màu chữ các link */
+    .nav-link {
+        color: var(--bs-body-color);
+    }
+
+    #header-section .nav-link:focus, #header-section .nav-link:hover {
+        color: var(--bs-body-color);
+        background-color: var(--bs-gray-200);
+    }
+
+/* HEADER SECTION ENDS */
+
+
+/* HEROES SECTION STARTS */
+
+    /* Chỉnh màu link login */
+    #heroes-section .login-link {
+        color: var(--bs-body-color);
+    }
+
+/* HEROES SECTION ENDS */
+
+
+/* POPULAR PRODUCTS SECTION STARTS */
+.product-card {
+  margin-bottom: 30px;
+}
+    /* Định dạng link tên sản phẩm */
+    .product-card .product-name {
+        color: var(--bs-body-color);
+        text-decoration: none;
+    }
+
+    /* Thêm gạch chân khi hover vào tên sản phẩm */
+    .product-card .product-name:hover {
+        text-decoration: underline;
+    }
+
+    /* Thêm đổ bóng khi hover vào thẻ sản phẩm */
+    .product-card:hover {
+        box-shadow: 8px 8px var(--bs-gray-200);
+    }
+
+    /* Định dạng icon trái tim khi hover */
+    .product-card i:hover, .product-card i:focus {
+        cursor: pointer;
+    }
+
+/* POPULAR PRODUCTS SECTION ENDS */
+
+
+/* ROOMS SECTION STARTS */
+    /* Thêm gạch chân khi hover vào tên phòng */
+    .room-card h2:hover {
+        text-decoration: underline;
+    }
+/* ROOMS SECTION ENDS */
+
+
+/* FOOTER SECTION STARTS */
+    /* Định dạng đường link khi hover */
+    #footer-section .nav-link:focus, #footer-section .nav-link:hover {
+        color: var(--bs-body-color);
+        text-decoration: underline;
+    }
+/* FOOTER SECTION ENDS */
+
+/* Create a custom radio button */
+.button {
+    float: left;
+    margin: 0 5px 0 0;
+    width: 100px;
+    height: 40px;
+    position: relative;
+
+  }
+  
+  .button label,
+  .button input {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .button input[type="radio"] {
+    opacity: 0.011;
+    z-index: 100;
+  }
+  
+  .button input[type="radio"]:checked + label {
+    background-color: #ffc107;
+    border-radius: 30px;
+  }
+  
+  .button label {
+    cursor: pointer;
+    z-index: 90;
+    line-height: 1.8em;
+    text-align: center;
+    border-radius: 30px;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+  }
+  #notice {
+    position: fixed;
+    top: 7vh;
+    right: calc(0px + 3vw);
+    z-index: 2000;
+  }
+  #notice .container {
+    width: 23vw;
+    position: relative;
+    margin-bottom: 10px;
+    background-color: var(--ora);
+    border-radius: 0 0 15px 15px;
+    padding: 15px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--whi);
+    font-size: 20px;
+    animation: popup;
+    animation-duration: 0.8s;
+    font-family: "Dosis", sans-serif;
+    
+    /* display: none; */
+  }
+  .product-img{
+    height: 200px;
+  }
+  #notice .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: var(--whi);
+  }
+  #notice .fade {
+    animation: fade;
+    animation-duration: 0.8s;
+  }
+  #notice .slide {
+    animation: slide;
+    animation-duration: 2.6s;
+    animation-delay: 0.8s;
+  }
+  
+  #notice .cart-adding,
+  #notice .favor-adding,
+  #notice .favor-removing,
+  #notice .cart-removing,
+  #notice .order-removing {
+    /* display: none; */
+  }
+  
+  #notice .cart-adding i,
+  #notice .favor-adding i,
+  #notice .favor-removing i,
+  #notice .cart-removing i,
+  #notice .order-removing i {
+    font-size: 25px;
+    margin-right: 5px;
+  }
+
+
+.swatch{
+  display:inline-block;
+  vertical-align: middle;
+  height: 30px;
+  width:30px;
+  margin: 0 5px 0 0 ;
+  border: 1px solid #d4d4d4;
+}
+
+
+/* Ẩn mũi tên mặc định của number input  */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#checkout-section .nav-link:focus, #checkout-section .nav-link:hover {
+    color: var(--bs-body-color);
+    text-decoration: underline;
+}
+
+#cart-section h6:focus, #cart-section h6:hover {
+    color: var(--bs-body-color);
+    text-decoration: underline;
+}
+.card-body{
+  height: 100px;
+}
+#myaccount {
+  font-size: 25px;
+  font-weight: 500;
+  color: var(--whi);
+  width: 100%;
+  /* height: 94vh; */
+  padding: 0 2%;
+}
+#myaccount h2 {
+  color: var(--bla);
+  margin-top: 2%;
+  font-size: 30px;
+}
+
+#myaccount .flex-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+#myaccount .flex-container .top-container {
+  width: 70%;
+  background: var(--whi);
+  border-radius: 30px;
+  margin-top: 2%;
+  color: var(--bla);
+  padding: 2%;
+}
+
+#myaccount .flex-container .top-container .container-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.8fr 1fr 0.8fr 1fr 0.8fr 1fr;
+  font-size: 20px;
+
+}
+
+#myaccount .flex-container .top-container .container-info .title {
+  padding: 0% 5%;
+  margin-bottom: 1%;
+  color: var(--ora);
+}
+
+#myaccount .flex-container .top-container .container-info .info {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1%;
+}
+
+#myaccount .flex-container .top-container .container-info .info input {
+  width: 95%;
+  border-radius: 20px;
+  padding: 2%;
+  padding-left: 3%;
+  font-size: calc(5px + 1vw);
+  background-color: var(--gr2);
+  font-family: "Dosis", sans-serif;
+  border: none;
+  outline: none;
+}
+#myaccount .flex-container .top-container .contain-button {
+  width: 98.5%;
+  display: flex;
+  justify-content: right;
+  margin-top: 2%;
+}
+#myaccount .flex-container .top-container .contain-button .button-placeholder {
+  width: 20%;
+  padding: 1%;
+  background-color: var(--ora);
+  color: var(--whi);
+  border-radius: 20px;
+  display: grid;
+  font-size: calc(0px + 1.3vw);
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr;
+  box-shadow: 0 2px 3px 2px rgba(253, 83, 26, 0.7);
+  cursor: no-drop;
+  opacity: 0.5;
+}
+#myaccount
+  .flex-container
+  .top-container
+  .contain-button
+  .button-placeholder:active {
+  transition: 0.3s ease-in-out;
+  transform: translateY(8px);
+}
+#myaccount
+  .flex-container
+  .top-container
+  .contain-button
+  .button-placeholder
+  .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#myaccount .flex-container .bottom-container {
+  width: 70%;
+  background: var(--gr2);
+  border-radius: 30px;
+  margin-top: 2%;
+  color: var(--bla);
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5%;
+}
+
+#myaccount .flex-container .bottom-container .order-placeholder {
+  width: 100%;
+  height: auto;
+  border-bottom: 3px var(--ora) solid;
+  padding: 0% 1.5% 5% 1.5%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 5fr 50px 50px;
+  background-color: var(--gr2);
+  font-size: 20px;
+}
+
+#myaccount .flex-container .bottom-container .order-placeholder .order-header {
+  width: 95%;
+  margin: 0 2.5%;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 1fr;
+  color: var(--gr1);
+}
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-header
+  .order-date {
+  display: block;
+  justify-content: left;
+  align-items: center;
+}
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-header
+  .order-id,
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-header
+  .order-status {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-header
+  .order-status {
+  color: var(--ora);
+  padding-right: 6%;
+}
+
+#myaccount .flex-container .bottom-container .order-placeholder .order-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  background-color: var(--whi);
+  border-radius: 20px 20px 0 0;
+}
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-details
+  .product-placeholder {
+  height: auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  grid-template-rows: 1fr;
+  border-bottom: 3px solid var(--gr2);
+}
+
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-details
+  .product-placeholder
+  .img-placeholder {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-details
+  .product-placeholder
+  .img-placeholder
+  img {
+  height: 100%;
+}
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-details
+  .product-placeholder
+  .info-placeholder {
+  display: grid;
+  margin: 8% 5%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  overflow: hidden;
+}
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-details
+  .product-placeholder
+  .info-placeholder
+  .artists-name {
+  color: var(--ora);
+}
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-details
+  .product-placeholder
+  .info-placeholder
+  .sub-total {
+  text-align: right;
+  color: var(--ora);
+}
+
+#myaccount .flex-container .bottom-container .order-placeholder .order-total {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  background-color: var(--whi);
+  padding: 0% 4% 0 3%;
+}
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-total
+  .total-bill {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  color: var(--ora);
+}
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-total
+  .total-title {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+#myaccount .flex-container .bottom-container .order-placeholder .order-address {
+  display: grid;
+  grid-template-columns: 13fr 2fr;
+  grid-template-rows: 1fr;
+  background-color: var(--whi);
+  padding: 1% 4% 6% 3%;
+  border-radius: 0 0 20px 20px;
+  width: 100%;
+}
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-address
+  .shipping-address {
+  justify-content: left;
+  display: flex;
+  align-items: center;
+  background-color: var(--whi);
+}
+
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-address
+  .cancel-button {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: var(--ora);
+  border: 2px solid var(--ora);
+  background-color: var(--whi);
+  border-radius: 15px;
+  transition: 0.2s ease-in-out;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-address
+  .cancel-button:hover {
+  color: var(--whi);
+  background-color: var(--ora);
+  transition: 0.2s ease-in-out;
+}
+
+#myaccount input[type="text"]::placeholder,input[type="password"]::placeholder,/* Chrome, Firefox, Opera, Safari 10.1+ */
+#myaccount input[type="text"]:-ms-input-placeholder,input[type="password"]:-ms-input-placeholder,  /* Internet Explorer 10-11 */
+    #myaccount input[type="text"]:-ms-input-placeholder,input[type="password"]:-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--gr1);
+  opacity: 1; /* Firefox */
+}
+#myaccount input[type="password"]::-ms-reveal,
+#myaccount input[type="password"]::-ms-clear {
+  display: none;
+}
+
+#myaccount .container-info i {
+  color: var(--gr1);
+  float: right;
+  font-size: 1.3vw;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 7%;
+  bottom: 0;
+}
+#myaccount .container-info input:disabled:hover {
+  cursor: no-drop;
+}
+#myaccount
+  .flex-container
+  .bottom-container
+  .order-placeholder
+  .order-address
+  .cancel-button.disabled {
+  opacity: 0.5;
+}
