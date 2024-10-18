@@ -39,22 +39,34 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         $userID = $_SESSION['userID'];
         $products = json_decode($_POST['products']);
         $hoaDonID = $dp->getNewHoaDonId();
-        $sql1 = "INSERT INTO hoadon
-        VALUES (" . $hoaDonID .",".$userID.",'".(new Datetime())->format('Y-m-d')."',1,NULL,'" .$address."')";
-        $result1 = $dp->excuteQuery($sql1);
         $error = false;
+        $test = true;
         foreach ($products as $product) {
           $sql = "select soluong,Gia from chitietphieunhap where soluong>0 and idsanpham=".$product->{"productID"}." and idmau=".$product->{"colorID"};
           $result = $dp->excuteQuery($sql);
-          $row = $result->fetch_assoc();
-          $sql = "INSERT INTO chitiethoadon
-                  VALUES (" .$hoaDonID . ",". $product->{"productID"} . "," . $product->{"colorID"} . ",". $product->{"quantity"} . "," . $row['Gia']*1.4 . ","   .$row['Gia']*1.4*$product->{"quantity"}  . ")";
-          $result = $dp->excuteQuery($sql);
-          if (!$result) {
-            $error = true;
+          if(!$result->fetch_assoc()){
+            $test = false;
           }
         }
-        if ($result1 && !$error) {
+        if($test){
+        
+        
+        $sql1 = "INSERT INTO hoadon
+        VALUES (" . $hoaDonID .",".$userID.",'".(new Datetime())->format('Y-m-d')."',1,NULL,'" .$address."')";
+        $result1 = $dp->excuteQuery($sql1);
+            foreach ($products as $product) {
+              $sql = "select soluong,Gia from chitietphieunhap where soluong>0 and idsanpham=".$product->{"productID"}." and idmau=".$product->{"colorID"};
+              $result = $dp->excuteQuery($sql);
+            $row = $result->fetch_assoc();
+            $sql = "INSERT INTO chitiethoadon
+                    VALUES (" .$hoaDonID . ",". $product->{"productID"} . "," . $product->{"colorID"} . ",". $product->{"quantity"} . "," . $row['Gia']*1.45 . ","   .$row['Gia']*1.45*$product->{"quantity"}  . ")";
+            $result = $dp->excuteQuery($sql);
+            if (!$result) {
+              $error = true;
+            }
+          }
+        }
+        if (!$error && $test) {
           echo "Success";
         } else {
           echo "Error";
@@ -67,6 +79,18 @@ switch ($_SERVER["REQUEST_METHOD"]) {
       case 'cancelOrder':
         $orderID = $_GET['orderID'];
         $sql = "UPDATE hoadon SET trangThai =0  WHERE idhoadon = " . $orderID;
+        $result = $dp->excuteQuery($sql);
+        if ($result) {
+          echo "Success";
+        } else {
+          echo "Error";
+        }
+        break;
+      case 'deleteOrder':
+        $orderID = $_GET['orderID'];
+        $idsanpham = $_GET['idsanpham'];
+        $idmau = $_GET['idmau'];
+        $sql = "delete from chitiethoadon WHERE idhoadon = " . $orderID." and idsanpham = ".$idsanpham." and idmau = ".$idmau;
         $result = $dp->excuteQuery($sql);
         if ($result) {
           echo "Success";

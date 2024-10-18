@@ -45,19 +45,19 @@
             </div>
       <div class="form-group">
       <label for="desc">Họ tên:</label>
-      <input type="text" class="nameAccount form-control" value="<?=$account['hoten']?>" disabled >
+      <input type="text" class="nameAccount form-control" value="<?=$account['hoten']?>"  >
     </div>       
     <div class="form-group">
       <label for="desc">SĐT:</label>
-      <input type="text" class="phoneAccount form-control" value="<?=$account['sdt']?>"  disabled>
+      <input type="text" class="phoneAccount form-control" value="<?=$account['sdt']?>"  >
     </div>
     <div class="form-group">
       <label for="desc">Địa chỉ:</label>
-      <input type="text" class="addressAccount form-control" value="<?=$account['diachi']?>" disabled>
+      <input type="text" class="addressAccount form-control" value="<?=$account['diachi']?>" >
     </div>
     <div class="form-group">
       <label for="desc">Email:</label>
-      <input type="text" class="emailAccount form-control" value="<?=$account['email']?>" disabled>
+      <input type="text" class="emailAccount form-control" value="<?=$account['email']?>" >
     </div>
     <div class="form-group">
       <label for="desc">Password:</label>

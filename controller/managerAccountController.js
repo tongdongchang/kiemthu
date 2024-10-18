@@ -96,6 +96,7 @@ const setAccountInfo = () => {
     let phoneInput = document.querySelector("#new-account .phoneNumber");
     let passwordInput = document.querySelector("#new-account .password");
     let role = parseInt(document.querySelector("#new-account .role").value);
+    let address = document.querySelector("#new-account .address");
     if (usernameInput.value == "") {
       customNotice(
         " fa-sharp fa-light fa-circle-exclamation",
@@ -141,7 +142,7 @@ const setAccountInfo = () => {
       phoneInput.focus();
       return false;
     }
-    if (nameInput.value == "") {
+    if (nameInput.value.trim() === "") {
       customNotice(
         " fa-sharp fa-light fa-circle-exclamation",
         "Please, enter your name!",
@@ -150,7 +151,44 @@ const setAccountInfo = () => {
       nameInput.focus();
       return false;
     }
-    if (phoneInput.value == "") {
+    
+    // Kiểm tra xem tên có chứa ký tự không hợp lệ
+    let nameRegex = /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂÊÔơƯ-]+(\s[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂÊÔơƯ-]+)*$/;
+    
+    if (!nameRegex.test(nameInput.value)) {
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Name cannot contain numbers or special characters!",
+        3
+      );
+      nameInput.focus();
+      return false;
+    }
+    console.log(address.value);
+    if (address.value.trim() === "") {
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter your address!",
+        3
+      );
+      address.focus();
+      return false;
+    }
+    console.log(address.value);
+    // Kiểm tra ký tự đặc biệt trong địa chỉ
+    let addressRegex = /^[a-zA-Z0-9\s,.-]+$/;
+    
+    if (!addressRegex.test(address.value)) {
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Address cannot contain special characters!",
+        3
+      );
+      address.focus();
+      return false;
+    }
+    
+    if (phoneInput.value.trim() == "") {
       customNotice(
         " fa-sharp fa-light fa-circle-exclamation",
         "Pleae, enter your phone number!",
@@ -211,10 +249,21 @@ const setAccountInfo = () => {
       emailInput.focus();
       return false;
     }
-    if (nameInput.value == "") {
+    if (nameInput.value.trim() == "") {
       customNotice(
         " fa-sharp fa-light fa-circle-exclamation",
         "Please, enter your name!",
+        3
+      );
+      nameInput.focus();
+      return false;
+    }
+    let nameRegex = /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂÊÔơƯ-]+(\s[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂÊÔơƯ-]+)*$/;
+    
+    if (!nameRegex.test(nameInput.value)) {
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Name cannot contain numbers or special characters!",
         3
       );
       nameInput.focus();

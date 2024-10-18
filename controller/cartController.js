@@ -12,7 +12,7 @@ const addToCart = (productID,colorID) => {
       },
     });
   };
-  
+
   const deleteFromCart = async (productID,colorID, input) => {
     await deleteByproductID(productID,colorID);
     input.closest(".product-placeholder").remove();
@@ -74,10 +74,11 @@ const addToCart = (productID,colorID) => {
   const updateTotalPrice = (input, quantity) => {
     let eachPriceInput = input.closest(".product-placeholder").querySelector(".eachPrice").innerHTML;
     let result = eachPriceInput.substring(0,eachPriceInput.length - 2);
-    let eachPrice = parseInt(result);
+    let eachPrice = parseFloat(result);
     let priceTotalInput = input
     .closest(".product-placeholder").querySelector(".total")
-    total = (Math.round(quantity * eachPrice * 100) / 100).toFixed(2)*1.45;
+    
+    total =  quantity*eachPrice;
     priceTotalInput.innerHTML = total+ " đ";
   };
   
@@ -124,7 +125,7 @@ const addToCart = (productID,colorID) => {
       let price = parseFloat(
         eachpri.substring(0,eachpri.length - 2)  
       );
-      subTotal += quantity * price*1.45;
+      subTotal += quantity * price;
       count+=1;
     }
     document.querySelector(".rounded-pill").innerHTML=count;

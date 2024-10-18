@@ -16,9 +16,20 @@
                 <label for="floatingInput">Username</label>
               </div>
               <div class="form-floating">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                <label for="floatingPassword">Password</label>
-              </div>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+    <label for="password">Password</label>
+    <span class="toggle-password" onclick="togglePasswordVisibility()" style="cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">
+        👁️
+    </span>
+</div>
+
+<script>
+  function togglePasswordVisibility() {
+    const passwordField = document.getElementById("password");
+    const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+    passwordField.setAttribute("type", type);
+  }
+</script>
 
               <div class="d-flex align-items-center justify-content-center py-4">
                 <p class="mb-0 me-2">Don't have an account?</p>

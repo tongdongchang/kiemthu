@@ -13,7 +13,7 @@ session_start();
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     
     <?php if (checkAccess(1)){ ?>
-      <a href="javascript:void(0)" class="menubtn" onclick="ShowThongKe()"><i class="fa fa-th"></i> Dashboard</a>
+      <a href="javascript:void(0)" class="menubtn" onclick="closeNav();ShowThongKe()"><i class="fa fa-th"></i> Dashboard</a>
       <?php if(!$fristpage){
         $fristpage=true;
         ?><script type="text/JavaScript">  
@@ -23,7 +23,7 @@ session_start();
       }} ?>
     
     <?php if (checkAccess(2)){ ?>
-      <a href="javascript:void(0)" class="menubtn"  onclick="ShowSanPham()" ><i class="fa fa-th"></i> Sản Phẩm</a>
+      <a href="javascript:void(0)" class="menubtn"   onclick="closeNav(); ShowSanPham();"><i class="fa fa-th"></i> Sản Phẩm</a>
       <?php if(!$fristpage){
         $fristpage=true;
         ?><script type="text/JavaScript">  
@@ -33,7 +33,7 @@ session_start();
       }} ?>
     
     <?php if (checkAccess(6)){ ?>
-      <a href="javascript:void(0)" class="menubtn"  onclick="ShowHoaDon()" ><i class="fa fa-th"></i> Hóa Đơn</a>
+      <a href="javascript:void(0)" class="menubtn"  onclick="closeNav();ShowHoaDon()" ><i class="fa fa-th"></i> Hóa Đơn</a>
       <?php if(!$fristpage){
         $fristpage=true;
         ?><script type="text/JavaScript">  
@@ -42,7 +42,7 @@ session_start();
         <?php
       }} ?>
     <?php if (checkAccess(8)){ ?> 
-      <a href="javascript:void(0)" class="menubtn"  onclick="ShowPhieuNhap()" ><i class="fa fa-th"></i> Phiếu Nhập</a>
+      <a href="javascript:void(0)" class="menubtn"  onclick="closeNav();ShowPhieuNhap()" ><i class="fa fa-th"></i> Phiếu Nhập</a>
       <?php if(!$fristpage){
         $fristpage=true;
         ?><script type="text/JavaScript">  
@@ -52,7 +52,7 @@ session_start();
       }} ?>
 
     <?php if (checkAccess(10)){ ?>
-      <a href="javascript:void(0)" class="menubtn"  onclick="ShowTaiKhoan()" ><i class="fa fa-th"></i> Tài Khoản</a>
+      <a href="javascript:void(0)" class="menubtn"  onclick="closeNav();ShowTaiKhoan()" ><i class="fa fa-th"></i> Tài Khoản</a>
       <?php if(!$fristpage){
         $fristpage=true;
         ?><script type="text/JavaScript">  
@@ -61,7 +61,7 @@ session_start();
         <?php
       }} ?>
     <?php if (checkAccess(13)){ ?> 
-      <a href="javascript:void(0)" class="menubtn"  onclick="ShowQuyen()" ><i class="fa fa-th"></i> Quyền</a>
+      <a href="javascript:void(0)" class="menubtn"  onclick="closeNav();ShowQuyen()" ><i class="fa fa-th"></i> Quyền</a>
       <?php if(!$fristpage){
         $fristpage=true;
         ?><script type="text/JavaScript">  

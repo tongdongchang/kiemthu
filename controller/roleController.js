@@ -44,12 +44,26 @@ const checkAddNewRole = () => {
   });
   if (roleNameInput.value.trim() == "") {
     customNotice(
-      " fa-sharp fa-light fa-circle-exclamation",
+      "fa-sharp fa-light fa-circle-exclamation",
       "Role name must not be empty!",
       3
     );
     return false;
   }
+  
+  let nameRegex = /^[a-zA-ZÀ-ỹ]+(?:\s[a-zA-ZÀ-ỹ]+)*$/;
+  
+  if (!nameRegex.test(roleNameInput.value.trim())) {
+    customNotice(
+      "fa-sharp fa-light fa-circle-exclamation",
+      "Name cannot contain numbers or special characters!",
+      3
+    );
+    roleNameInput.focus();
+    console.log(roleNameInput);
+    return false;
+  }
+  
   if((listPermission.indexOf(5)!=-1||listPermission.indexOf(3)!=-1||listPermission.indexOf(4)!=-1)&&listPermission.indexOf(2)==-1){
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",

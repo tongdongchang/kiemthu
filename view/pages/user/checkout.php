@@ -17,16 +17,21 @@ $info=$dp->excuteQuery($sql)->fetch_assoc();
             <div class="col-md-5 col-lg-4 order-md-last">
               <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span>Your cart</span>
-                <span class="badge bg-warning rounded-pill">3</span>
+                <span class="badge bg-warning rounded-pill">0</span>
               </h4>
               <ul class="list-group mb-3 ">
              <?php $sql = "
     SELECT sanpham.*, mau.*, chitietphieunhap.*, giohang.soluong AS soluong_giohang
     FROM sanpham
-    JOIN giohang ON sanpham.idsanpham = giohang.idsanpham AND sanpham.idmau = giohang.idmau
+    JOIN giohang ON sanpham.idsanpham = giohang.idsanpham 
+                AND sanpham.idmau = giohang.idmau
     JOIN mau ON sanpham.idmau = mau.idmau
-    JOIN chitietphieunhap ON chitietphieunhap.idsanpham = sanpham.idsanpham AND chitietphieunhap.idmau = sanpham.idmau
-    WHERE giohang.idnguoidung = ".$_SESSION['userID'];
+    JOIN chitietphieunhap ON chitietphieunhap.idsanpham = sanpham.idsanpham 
+                         AND chitietphieunhap.idmau = sanpham.idmau 
+    WHERE chitietphieunhap.Gia > 0 and chitietphieunhap.soluong > 0 
+      AND giohang.idnguoidung = ".$_SESSION['userID']."
+    GROUP BY sanpham.idsanpham, sanpham.idmau
+   ";
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {

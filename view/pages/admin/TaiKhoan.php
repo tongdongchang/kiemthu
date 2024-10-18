@@ -65,10 +65,23 @@
       <label for="desc">Username:</label>
       <input type="text" class="form-control username"  >
     </div>
-    <div class="form-group">
-      <label for="desc">Password:</label>
-      <input type="password" class="form-control password"  >
-    </div>
+    <div class="form-group" style="position: relative;">
+  <label for="desc">Password:</label>
+  <input type="password" class="form-control password" id="password">
+  <span class="toggle-password" onclick="togglePasswordVisibility()" 
+        style="position: absolute; right: 10px; top: 55%; cursor: pointer;">
+    👁️
+  </span>
+</div>
+
+<script>
+  function togglePasswordVisibility() {
+    const passwordField = document.getElementById("password");
+    const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+    passwordField.setAttribute("type", type);
+  }
+</script>
+
     <div class="form-group">
               <label>Vai trò:</label>
               <select id="category " class="role form-control">

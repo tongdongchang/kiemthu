@@ -32,10 +32,15 @@ session_start();
      $sql = "
      SELECT sanpham.*, mau.*, chitietphieunhap.*, giohang.soluong AS soluong_giohang
      FROM sanpham
-     JOIN giohang ON sanpham.idsanpham = giohang.idsanpham AND sanpham.idmau = giohang.idmau
+     JOIN giohang ON sanpham.idsanpham = giohang.idsanpham 
+                 AND sanpham.idmau = giohang.idmau
      JOIN mau ON sanpham.idmau = mau.idmau
-     JOIN chitietphieunhap ON chitietphieunhap.idsanpham = sanpham.idsanpham AND chitietphieunhap.idmau = sanpham.idmau
-     WHERE giohang.idnguoidung = ".$_SESSION['userID'];
+     JOIN chitietphieunhap ON chitietphieunhap.idsanpham = sanpham.idsanpham 
+                          AND chitietphieunhap.idmau = sanpham.idmau
+     WHERE chitietphieunhap.Gia > 0 and chitietphieunhap.soluong > 0 
+       AND giohang.idnguoidung = ".$_SESSION['userID']."
+     GROUP BY sanpham.idsanpham, sanpham.idmau
+     ";
  
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
@@ -56,7 +61,7 @@ session_start();
                 <div class="col-3 text-break">
                     <h6 class="text-muted"><a href="javascript:void(0)" class="text-decoration-none text-black nav-link px-0" onclick="ShowThongTin(<?=$row['idsanpham']?> )"><?=$row['tensanpham']?></a></h6>
                     <h6 class="text-muted"><?=$row['tenMau']?></h6>
-                    <h6 class="text-black mb-0 eachPrice"><?=$row['Gia']?> đ</h6>
+                    <h6 class="text-black mb-0 eachPrice"><?=$row['Gia']*1.45?> đ</h6>
                 </div>
                 <div class="col-3 d-flex ">
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"

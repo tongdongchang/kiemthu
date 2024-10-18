@@ -41,16 +41,18 @@
         <th class="text-center">Số lượng</th>
         <th class="text-center">Đơn giá</th>
         <th class="text-center">Thành Tiền</th>
+        <th class="text-center">Action</th>
       </tr>
     </thead>
     <?php for ($i = 0; $i < count($products); $i++): ?>
-      <tr>
+      <tr id="row-<?=$products[$i]['idsanpham']?>-<?=$products[$i]['idmau']?>">
         <td><?=$i+1?></td>
         <td><?=$products[$i]['tensanpham']?></td>
         <td><?=$products[$i]['tenMau']?></td>
-        <td><?=$products[$i]['soluong']?></td>
-        <td><?=$products[$i]['gia']?></td>
-        <td><?=$products[$i]['thanhtien']?></td>
+        <td><?=$products[$i]['soluong_hd']?></td>
+        <td><?=$products[$i]['Gia']*1.45?></td>
+        <td><?=$products[$i]['soluong_tt']?></td>
+        <td><button type="button" class="btn btn-danger" style="height:40px" onclick="deleteOrder(<?=$id?>,<?=$products[$i]['idsanpham']?>,<?=$products[$i]['idmau']?>)" >Delete</button></td>
       </tr>
 
       <?php endfor; ?>
@@ -70,9 +72,11 @@ function getProductInOrder($recordID)
 {
     global $dp;
     $dp = new DataProvider();
-    $sql = "SELECT * FROM chitiethoadon join sanpham on chitiethoadon.idsanpham=sanpham.idsanpham and chitiethoadon.idmau=sanpham.idmau 
+    $sql = "SELECT sanpham.*, mau.*,chitietphieunhap.*,chitiethoadon.soluong AS soluong_hd,chitiethoadon.thanhtien AS soluong_tt FROM chitiethoadon join sanpham on chitiethoadon.idsanpham=sanpham.idsanpham and chitiethoadon.idmau=sanpham.idmau 
     join mau on chitiethoadon.idmau=mau.idmau join chitietphieunhap on chitiethoadon.idsanpham = chitietphieunhap.idsanpham and chitiethoadon.idmau=chitietphieunhap.idmau
-    WHERE idhoadon = $recordID";
+    WHERE idhoadon = $recordID and chitietphieunhap.Gia > 0 and chitietphieunhap.soluong >0
+    GROUP BY sanpham.idsanpham, sanpham.idmau
+";
     $result = $dp->excuteQuery($sql);
     $detailRecord = array();
     if ($result->num_rows > 0) {
@@ -82,6 +86,7 @@ function getProductInOrder($recordID)
     }
     return $detailRecord;
 }
+
 function getName($recordID)
 {
     global $dp;

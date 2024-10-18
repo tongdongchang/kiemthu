@@ -56,11 +56,18 @@ $dp = new DataProvider();
                   <h6 class="card-title"><a class="product-name" href="product-detail.php"><?=$row['tensanpham']?></a></h6>
               </div>
               <div class="d-flex justify-content-center">
+                <?php 
+                if($gia['Gia']===0){
+                ?><strong class="text-success product-price">Hết Hàng</strong><?php }else{ ?>
                 <strong class="text-success product-price"><?=$gia['Gia']*1.45;?> đ</strong>
-                            
+                <?php } ?>            
               </div>
               <div class="d-flex justify-content-between font-weight-bold mt-3">
+              <?php 
+                if($gia['Gia']!=0){
+                ?>
                 <button class="w-100 btn btn-warning add-to-cart-btn" onclick="addToCart(<?=$row['idsanpham']?>,<?=$image['idmau']?>)">Add to cart</button>
+                <?php }?>
               </div>
             </div>
           </div>

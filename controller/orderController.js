@@ -19,13 +19,20 @@ const order = async () => {
         action: "createOrder",
       },
       success: function (res) {
-        if (res != "Success") alert(res);
+        if (res != "Success"){
+          customNotice(
+            " fa-sharp fa-light fa-circle-exclamation",
+            "Bạn order quá trễ hàng đã hết vui lòng mua lại!",
+            1
+          );
+        }
         else{
           customNotice(
             " fa-sharp fa-light fa-circle-exclamation",
             "Order success!",
             1
           );
+          console.log(res);
 
         }
       },
@@ -139,4 +146,27 @@ const order = async () => {
       },
     });
   }
+  const deleteOrder=(orderID,idsanpham,idmau)=>{
+    $.ajax({
+      url: "util/order.php?orderID=" +orderID+"&idsanpham="+idsanpham+"&idmau="+idmau+"&action=deleteOrder",
+      type: "PUT",success: function (res) {
+        if (res == "Not enough product quantity") {
+          customNotice(
+            "fa-sharp fa-light fa-circle-exclamation",
+            "Error",
+            3
+          );
+        } else if (res != "Success") console.log(res);
+        else {
+          customNotice(
+            "fa-sharp fa-light fa-circle-check",
+            "Delete successfully!",
+            1
+          );
+          $(`#row-${idsanpham}-${idmau}`).remove();
+        }
+      },
+    });
+  }
+  
   
