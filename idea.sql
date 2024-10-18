@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 14, 2024 at 10:38 PM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Host: 127.0.0.1
+-- Generation Time: Oct 18, 2024 at 07:02 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,12 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `chitiethoadon` (
-  `idhoadon` int NOT NULL,
-  `idsanpham` int NOT NULL,
-  `idmau` int NOT NULL,
-  `soluong` int NOT NULL,
-  `dongia` bigint NOT NULL,
-  `thanhtien` bigint NOT NULL
+  `idhoadon` int(11) NOT NULL,
+  `idsanpham` int(11) NOT NULL,
+  `idmau` int(11) NOT NULL,
+  `soluong` int(11) NOT NULL,
+  `dongia` float NOT NULL,
+  `thanhtien` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -41,15 +41,45 @@ CREATE TABLE `chitiethoadon` (
 --
 
 INSERT INTO `chitiethoadon` (`idhoadon`, `idsanpham`, `idmau`, `soluong`, `dongia`, `thanhtien`) VALUES
-(1, 2, 5, 12, 10000, 120000),
-(2, 2, 3, 1, 10000, 10000),
-(3, 1, 2, 4, 2000000, 8000000),
-(3, 2, 5, 4, 10000, 40000),
-(4, 2, 3, 2, 10000, 20000),
-(4, 2, 4, 1, 10000, 10000),
-(4, 2, 6, 1, 10000, 10000),
-(4, 3, 4, 1, 100000, 100000),
-(5, 4, 2, 10, 100000, 1000000);
+(21, 2, 3, 3, 10000, 30000),
+(22, 4, 2, 1, 100000, 100000),
+(23, 2, 3, 1, 10000, 10000),
+(25, 2, 3, 1, 1, 10000),
+(26, 2, 3, 1, 1, 10000),
+(27, 2, 3, 1, 1, 0),
+(28, 2, 3, 4, 1, 6),
+(29, 2, 3, 1, 1, 1),
+(30, 1, 2, 2, 0, 0),
+(30, 2, 3, 1, 1, 1),
+(31, 2, 3, 1, 1, 1),
+(32, 2, 3, 4, 1, 6),
+(33, 2, 3, 1, 1, 1),
+(34, 2, 3, 2, 1, 3),
+(35, 2, 3, 2, 1, 3),
+(38, 1, 2, 1, 1400, 1400),
+(38, 2, 3, 1, 1, 1),
+(40, 1, 2, 1, 0, 0),
+(42, 1, 2, 1, 1450, 1400),
+(43, 1, 2, 1, 1450, 1400),
+(44, 1, 2, 1, 0, 0),
+(50, 1, 2, 1, 0, 0),
+(51, 1, 2, 1, 1450, 1450),
+(55, 1, 2, 1, 1450, 1400),
+(57, 1, 2, 1, 1450, 1400),
+(58, 1, 2, 1, 1450, 1400),
+(59, 1, 2, 1, 1450, 1400),
+(60, 2, 3, 1, 22, 21),
+(61, 2, 3, 4, 22, 84),
+(62, 2, 3, 3, 22, 63),
+(63, 2, 3, 3, 22, 63),
+(64, 2, 3, 1, 22, 21),
+(65, 2, 3, 6, 22, 126),
+(66, 2, 3, 5, 22, 105),
+(67, 2, 3, 3, 22, 63),
+(68, 2, 3, 3, 21.75, 63),
+(69, 2, 3, 3, 21.75, 65.25),
+(70, 2, 3, 3, 21.75, 65.25),
+(73, 2, 3, 1, 21.75, 21.75);
 
 -- --------------------------------------------------------
 
@@ -58,21 +88,24 @@ INSERT INTO `chitiethoadon` (`idhoadon`, `idsanpham`, `idmau`, `soluong`, `dongi
 --
 
 CREATE TABLE `chitietphieunhap` (
-  `idphieunhap` int NOT NULL,
-  `idsanpham` int NOT NULL,
-  `idmau` int NOT NULL,
-  `soluong` int NOT NULL
+  `idphieunhap` int(11) NOT NULL,
+  `idsanpham` int(11) NOT NULL,
+  `idmau` int(11) NOT NULL,
+  `Gia` int(11) NOT NULL,
+  `soluong` int(11) NOT NULL,
+  `TrangThai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `chitietphieunhap`
 --
 
-INSERT INTO `chitietphieunhap` (`idphieunhap`, `idsanpham`, `idmau`, `soluong`) VALUES
-(1, 2, 3, 100),
-(1, 2, 4, 100),
-(2, 2, 5, 100),
-(6, 4, 2, 1000);
+INSERT INTO `chitietphieunhap` (`idphieunhap`, `idsanpham`, `idmau`, `Gia`, `soluong`, `TrangThai`) VALUES
+(21, 1, 2, 1000, 1, 0),
+(24, 2, 3, 10, 0, 0),
+(25, 2, 3, 15, 3, 0),
+(26, 2, 3, 16, 0, 0),
+(27, 2, 3, 17, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -81,10 +114,10 @@ INSERT INTO `chitietphieunhap` (`idphieunhap`, `idsanpham`, `idmau`, `soluong`) 
 --
 
 CREATE TABLE `giohang` (
-  `idnguoidung` int NOT NULL,
-  `idsanpham` int NOT NULL,
-  `idmau` int NOT NULL,
-  `soluong` int NOT NULL
+  `idnguoidung` int(11) NOT NULL,
+  `idsanpham` int(11) NOT NULL,
+  `idmau` int(11) NOT NULL,
+  `soluong` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -94,11 +127,11 @@ CREATE TABLE `giohang` (
 --
 
 CREATE TABLE `hoadon` (
-  `idhoadon` int NOT NULL,
-  `idnguoidung` int NOT NULL,
+  `idhoadon` int(11) NOT NULL,
+  `idnguoidung` int(11) NOT NULL,
   `thoigiandat` date NOT NULL,
-  `trangthai` int NOT NULL,
-  `idphutrach` int DEFAULT NULL,
+  `trangthai` int(11) NOT NULL,
+  `idphutrach` int(11) DEFAULT NULL,
   `diachigiaohang` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -111,7 +144,75 @@ INSERT INTO `hoadon` (`idhoadon`, `idnguoidung`, `thoigiandat`, `trangthai`, `id
 (2, 3, '2024-05-14', 0, NULL, '23122003'),
 (3, 3, '2024-05-14', 0, NULL, '23122003'),
 (4, 3, '2024-05-14', 0, NULL, '23122003'),
-(5, 3, '2024-05-14', 2, 1, '23122003');
+(5, 3, '2024-05-14', 2, 1, '23122003'),
+(6, 3, '2024-09-14', 2, 1, 'tp hcm 123'),
+(7, 4, '2024-09-15', 1, NULL, 'ewew'),
+(8, 4, '2024-09-15', 2, 2, 'ewew'),
+(9, 4, '2024-09-15', 2, 1, 'ekwoekwo'),
+(10, 2, '2024-10-04', 1, NULL, '23122003'),
+(11, 4, '2024-10-04', 2, 2, 'ewew'),
+(12, 4, '2024-10-05', 1, NULL, 'ewew'),
+(13, 4, '2024-10-05', 2, 1, 'OK'),
+(14, 4, '2024-10-05', 2, 2, 'ABCDE'),
+(15, 4, '2024-10-05', 2, 1, 'Giao di'),
+(16, 4, '2024-10-06', 2, 2, 'cc'),
+(17, 4, '2024-10-06', 2, 2, 'ddd'),
+(18, 4, '2024-10-06', 2, 2, 'wwww'),
+(19, 4, '2024-10-06', 2, 2, 'hihihi'),
+(20, 4, '2024-10-06', 2, 2, 'đw'),
+(21, 4, '2024-10-06', 2, 2, 'ewew'),
+(22, 4, '2024-10-06', 1, NULL, 'ewew'),
+(23, 4, '2024-10-06', 1, NULL, 'ewew'),
+(24, 4, '2024-10-06', 1, NULL, 'new'),
+(25, 4, '2024-10-06', 1, NULL, 'OK'),
+(26, 4, '2024-10-06', 2, 2, 'OKla'),
+(27, 4, '2024-10-06', 2, 2, 'ewewqa'),
+(28, 4, '2024-10-06', 1, NULL, 'ewew'),
+(29, 4, '2024-10-15', 1, NULL, '14'),
+(30, 4, '2024-10-15', 1, NULL, '15'),
+(31, 4, '2024-10-15', 1, NULL, 'ewew'),
+(32, 4, '2024-10-15', 1, NULL, 'OKLA'),
+(33, 4, '2024-10-15', 1, NULL, 'Meo'),
+(34, 4, '2024-10-17', 2, 2, 'WWW'),
+(35, 4, '2024-10-17', 2, 1, 'DDD'),
+(36, 16, '2024-10-17', 1, NULL, 'swnm'),
+(37, 16, '2024-10-17', 1, NULL, 'swnm'),
+(38, 4, '2024-10-17', 2, 2, 'ZôZ'),
+(39, 16, '2024-10-17', 1, NULL, 'swnm'),
+(40, 16, '2024-10-17', 1, NULL, 'swnm'),
+(41, 16, '2024-10-17', 1, NULL, 'swnm'),
+(42, 4, '2024-10-17', 2, 2, 'MYMY'),
+(43, 4, '2024-10-17', 2, 2, 'YZYYZ'),
+(44, 16, '2024-10-17', 1, NULL, 'x'),
+(45, 16, '2024-10-17', 2, 2, 'swnm'),
+(46, 16, '2024-10-17', 1, NULL, 'swnm'),
+(47, 16, '2024-10-17', 1, NULL, 'swnm'),
+(48, 16, '2024-10-17', 1, NULL, 'oiuy'),
+(49, 16, '2024-10-17', 1, NULL, 'po'),
+(50, 16, '2024-10-17', 1, NULL, 'swnm'),
+(51, 16, '2024-10-17', 1, NULL, '123'),
+(52, 16, '2024-10-17', 1, NULL, 'swnm'),
+(53, 16, '2024-10-17', 1, NULL, '123'),
+(54, 16, '2024-10-17', 1, NULL, 'xsa'),
+(55, 16, '2024-10-17', 1, NULL, 'swnm'),
+(56, 16, '2024-10-17', 1, NULL, 'swnm'),
+(57, 16, '2024-10-17', 1, NULL, 'swnm'),
+(58, 16, '2024-10-17', 1, NULL, 'swnm'),
+(59, 16, '2024-10-17', 1, NULL, 'swnm'),
+(60, 4, '2024-10-17', 1, NULL, 'ewew'),
+(61, 4, '2024-10-18', 1, NULL, 'Mua Ne'),
+(62, 4, '2024-10-18', 1, NULL, 'Mua moi'),
+(63, 4, '2024-10-18', 1, NULL, 'Mua'),
+(64, 4, '2024-10-18', 1, NULL, 'ewew'),
+(65, 4, '2024-10-18', 1, NULL, 'ewew'),
+(66, 4, '2024-10-18', 1, NULL, 'ewew'),
+(67, 4, '2024-10-18', 1, NULL, 'ewew'),
+(68, 4, '2024-10-18', 1, NULL, 'ewew'),
+(69, 4, '2024-10-18', 1, NULL, 'ewew'),
+(70, 4, '2024-10-18', 2, 1, 'OKMM'),
+(71, 4, '2024-10-18', 1, NULL, 'Mua'),
+(72, 4, '2024-10-18', 1, NULL, 'ewew'),
+(73, 4, '2024-10-18', 1, NULL, 'ewew');
 
 -- --------------------------------------------------------
 
@@ -120,7 +221,7 @@ INSERT INTO `hoadon` (`idhoadon`, `idnguoidung`, `thoigiandat`, `trangthai`, `id
 --
 
 CREATE TABLE `loai` (
-  `idloai` int NOT NULL,
+  `idloai` int(11) NOT NULL,
   `tenloai` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -140,7 +241,7 @@ INSERT INTO `loai` (`idloai`, `tenloai`) VALUES
 --
 
 CREATE TABLE `mau` (
-  `idmau` int NOT NULL,
+  `idmau` int(11) NOT NULL,
   `tenMau` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -164,9 +265,9 @@ INSERT INTO `mau` (`idmau`, `tenMau`) VALUES
 --
 
 CREATE TABLE `mottaquyen` (
-  `idquyen` int NOT NULL,
+  `idquyen` int(11) NOT NULL,
   `mota` varchar(100) NOT NULL,
-  `model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `model` varchar(100) NOT NULL,
   `tieude` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -199,12 +300,12 @@ INSERT INTO `mottaquyen` (`idquyen`, `mota`, `model`, `tieude`) VALUES
 --
 
 CREATE TABLE `nguoidung` (
-  `idnguoidung` int NOT NULL,
+  `idnguoidung` int(11) NOT NULL,
   `hoten` varchar(100) NOT NULL,
   `sdt` varchar(20) NOT NULL,
   `diachi` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `trangthai` int NOT NULL
+  `trangthai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -213,8 +314,21 @@ CREATE TABLE `nguoidung` (
 
 INSERT INTO `nguoidung` (`idnguoidung`, `hoten`, `sdt`, `diachi`, `email`, `trangthai`) VALUES
 (1, 'admin', '0938023118', '23122003', 'admin@gmail.com', 1),
-(2, 'Luong gia tuan', '0938023118', '23122003', 'tuandj23122003@gmail.com', 1),
-(3, 'user', '0938023118', 'tp hcm', 'user@gmail.com', 1);
+(2, 'admin', '0938023118', '23122003', 'admin@gmail.com', 1),
+(3, 'user123', '0938023118', 'tp hcm 123', 'user@gmail.com', 1),
+(4, 'fe', '0958465846', 'ewew', 'das@gmail.com', 1),
+(5, 'vkdo', '0908866548', 'koj', 'dem@gmail.com', 1),
+(6, '432hu', '0907799843', '@e3829!', 'ewm@gmail.com', 1),
+(7, 'kofr213', '0907799843', '123 Nguyen DU', 'dew@gmail.com', 1),
+(8, 'dewij3127!!', '0907799843', 'sq12', 'aewf@gmail.com', 1),
+(9, 'ccno123 !!', '0907799843', 'xsakook123', 'dewni@gmail.com', 1),
+(10, '   ', '0908685364', 'đưewm', 'vds@gmail.com', 1),
+(11, 'dksao1!', '0959484848', 'đanự', 'fafe@gmail.com', 1),
+(12, '    ', '0907799843', 'gre', 'fejsuof@gmail.com', 1),
+(13, 'xsxsnj', '0907799843', 'x!!!', 'xsmk@gmail.com', 1),
+(14, 'tan', '0907799846', 'xsko 123', 'e3e3@gmail.com', 1),
+(15, 'sjwiij', '0907788463', 'koi1', 'xko@gmail.com', 1),
+(16, 'dsa', '0987654369', 'swnm', 'dwenj@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -223,8 +337,8 @@ INSERT INTO `nguoidung` (`idnguoidung`, `hoten`, `sdt`, `diachi`, `email`, `tran
 --
 
 CREATE TABLE `phieunhap` (
-  `idphieunhap` int NOT NULL,
-  `idnguoinhap` int NOT NULL,
+  `idphieunhap` int(11) NOT NULL,
+  `idnguoinhap` int(11) NOT NULL,
   `ngaynhap` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -235,7 +349,26 @@ CREATE TABLE `phieunhap` (
 INSERT INTO `phieunhap` (`idphieunhap`, `idnguoinhap`, `ngaynhap`) VALUES
 (1, 1, '2024-05-12'),
 (2, 1, '2024-05-13'),
-(6, 1, '2024-05-14');
+(6, 1, '2024-05-14'),
+(7, 1, '2024-09-14'),
+(10, 1, '2024-09-15'),
+(11, 1, '2024-10-03'),
+(12, 1, '2024-10-04'),
+(13, 1, '2024-10-04'),
+(14, 1, '2024-10-04'),
+(15, 1, '2024-10-04'),
+(16, 1, '2024-10-04'),
+(17, 1, '2024-10-04'),
+(18, 1, '2024-10-04'),
+(19, 1, '2024-10-04'),
+(20, 1, '2024-10-04'),
+(21, 1, '2024-10-05'),
+(22, 1, '2024-10-06'),
+(23, 1, '2024-10-06'),
+(24, 1, '2024-10-06'),
+(25, 1, '2024-10-17'),
+(26, 1, '2024-10-17'),
+(27, 1, '2024-10-18');
 
 -- --------------------------------------------------------
 
@@ -244,7 +377,7 @@ INSERT INTO `phieunhap` (`idphieunhap`, `idnguoinhap`, `ngaynhap`) VALUES
 --
 
 CREATE TABLE `phong` (
-  `idphong` int NOT NULL,
+  `idphong` int(11) NOT NULL,
   `tenphong` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -264,8 +397,8 @@ INSERT INTO `phong` (`idphong`, `tenphong`) VALUES
 --
 
 CREATE TABLE `quyen` (
-  `idvaitro` int NOT NULL,
-  `idquyen` int NOT NULL
+  `idvaitro` int(11) NOT NULL,
+  `idquyen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -275,23 +408,32 @@ CREATE TABLE `quyen` (
 INSERT INTO `quyen` (`idvaitro`, `idquyen`) VALUES
 (3, 1),
 (3, 2),
-(4, 2),
 (3, 3),
 (3, 4),
 (3, 5),
 (3, 6),
 (3, 7),
 (3, 8),
-(4, 8),
 (3, 9),
-(4, 9),
 (3, 10),
 (3, 11),
 (3, 12),
 (3, 13),
 (3, 14),
 (3, 15),
-(3, 16);
+(3, 16),
+(4, 2),
+(4, 8),
+(4, 9),
+(5, 1),
+(5, 2),
+(5, 10),
+(5, 11),
+(5, 13),
+(5, 14),
+(5, 15),
+(5, 16),
+(6, 6);
 
 -- --------------------------------------------------------
 
@@ -300,16 +442,16 @@ INSERT INTO `quyen` (`idvaitro`, `idquyen`) VALUES
 --
 
 CREATE TABLE `sanpham` (
-  `idsanpham` int NOT NULL,
-  `idmau` int NOT NULL,
-  `idphong` int NOT NULL,
-  `idloai` int NOT NULL,
+  `idsanpham` int(11) NOT NULL,
+  `idmau` int(11) NOT NULL,
+  `idphong` int(11) NOT NULL,
+  `idloai` int(11) NOT NULL,
   `tensanpham` varchar(100) NOT NULL,
-  `gia` bigint NOT NULL,
+  `gia` bigint(20) NOT NULL,
   `mota` varchar(100) NOT NULL,
   `hinh` varchar(100) NOT NULL,
-  `soLuong` int NOT NULL,
-  `trangthai` int NOT NULL
+  `soLuong` int(11) NOT NULL,
+  `trangthai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -317,23 +459,34 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`idsanpham`, `idmau`, `idphong`, `idloai`, `tensanpham`, `gia`, `mota`, `hinh`, `soLuong`, `trangthai`) VALUES
-(1, 0, 1, 1, 'ghế sofa uppland', 2000000, 'ghế sofa cao cấp', '', 0, 0),
-(1, 2, 1, 1, 'ghế sofa uppland', 2000000, 'ghế sofa cao cấp', 'th.jpg', 0, 1),
+(1, 0, 2, 2, 'ghế sofa uppland', 2000000, 'ghế sofa cao cấp', '', 0, 0),
+(1, 2, 2, 2, 'ghế sofa uppland', 2000000, 'ghế sofa cao cấp', 'th.jpg', 11, 1),
 (2, 0, 1, 1, 'ghế nhựa', 10000, 'ghế nhựa Vergil', '', 0, 0),
-(2, 3, 1, 1, 'ghế nhựa', 10000, 'ghế nhựa Vergil', 'image_2024-05-12_235147442.png', 100, 1),
-(2, 4, 1, 1, 'ghế nhựa', 10000, 'ghế nhựa Vergil', 'image_2024-05-12_235129135.png', 100, 1),
-(2, 5, 1, 1, 'ghế nhựa', 10000, 'ghế nhựa Vergil', 'image_2024-05-12_235758134.png', 88, 1),
+(2, 3, 1, 1, 'ghế nhựa', 10000, 'ghế nhựa Vergil', 'image_2024-05-12_235147442.png', 132, 1),
+(2, 4, 1, 1, 'ghế nhựa', 10000, 'ghế nhựa Vergil', 'image_2024-05-12_235129135.png', 124, 1),
+(2, 5, 1, 1, 'ghế nhựa', 10000, 'ghế nhựa Vergil', 'image_2024-05-12_235758134.png', 91, 1),
 (2, 6, 1, 1, 'ghế nhựa', 10000, 'ghế nhựa Vergil', 'image_2024-05-12_235831281.png', 0, 1),
 (3, 0, 1, 1, 'ghe nhua cao cap', 100000, 'ghe nhua cao cap', '', 0, 0),
-(3, 4, 1, 1, 'ghe nhua cao cap', 100000, 'ghe nhua cao cap', 'th.jpg', 0, 1),
+(3, 4, 1, 1, 'ghe nhua cao cap', 100000, 'ghe nhua cao cap', 'th.jpg', 2, 0),
 (4, 0, 1, 1, 'ghế nhựa Vergil', 100000, 'ngồi phê lắm', '', 0, 0),
-(4, 2, 1, 1, 'ghế nhựa Vergil', 100000, 'ngồi phê lắm', 'image_2024-05-15_014429249.png', 940, 1),
+(4, 2, 1, 1, 'ghế nhựa Vergil', 100000, 'ngồi phê lắm', 'image_2024-05-15_014429249.png', 944, 1),
 (5, 0, 2, 1, 'asd', 100000, 'asd', '', 0, 0),
 (5, 2, 2, 1, 'asd', 100000, 'asd', 'image_2024-05-15_015657079.png', 0, 1),
-(6, 0, 2, 1, 'asd', 213, 'asd', '', 0, 0),
-(6, 4, 2, 1, 'asd', 213, 'asd', 'image_2024-05-15_015705734.png', 0, 1),
+(6, 0, 1, 2, 'asd', 213, 'asd', '', 0, 0),
+(6, 4, 1, 2, 'asd', 213, 'asd', 'image_2024-05-15_015705734.png', 0, 1),
 (7, 0, 2, 2, 'ghe sofa ', 2, 'ghe sofa ', '', 0, 0),
-(7, 4, 2, 2, 'ghe sofa ', 2, 'ghe sofa ', 'image_2024-05-15_015734790.png', 0, 1);
+(7, 4, 2, 2, 'ghe sofa ', 2, 'ghe sofa ', 'image_2024-05-15_015734790.png', 0, 1),
+(8, 0, 1, 1, 'kkkk', 100001, 'kkkk', '', 0, 0),
+(8, 6, 1, 1, 'kkkk', 100001, 'kkkk', 'default.jpg', 0, 1),
+(9, 0, 1, 1, 'kkkk', 13123, 'ưqwq', '', 0, 0),
+(10, 0, 1, 1, 'vnsjfvnjdf', 635, '321', '', 0, 0),
+(10, 5, 1, 1, 'vnsjfvnjdf', 635, '321', 'image_2024-05-12_235758134.png', 0, 1),
+(11, 0, 1, 1, 'uuuu', 0, 'dsxa', '', 0, 0),
+(11, 1, 1, 1, 'uuuu', 0, 'dsxa', 'image_2024-05-12_235129135.png', 0, 1),
+(12, 0, 1, 1, 'abc', 1, '2', '', 0, 0),
+(13, 0, 1, 1, 'dsadsamk', 0, 'dasdsa', '', 0, 0),
+(14, 0, 1, 2, 'Anh', 0, 'Anh123', '', 0, 0),
+(14, 3, 1, 2, 'Anh', 0, 'Anh123', 'default.jpg', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -342,20 +495,34 @@ INSERT INTO `sanpham` (`idsanpham`, `idmau`, `idphong`, `idloai`, `tensanpham`, 
 --
 
 CREATE TABLE `taikhoan` (
-  `idnguoidung` int NOT NULL,
+  `idnguoidung` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `ngaytao` date NOT NULL,
-  `vaitro` int NOT NULL
+  `vaitro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Dumping data for table `taikhoan`
 --
 
 INSERT INTO `taikhoan` (`idnguoidung`, `username`, `password`, `ngaytao`, `vaitro`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2024-04-15', 3),
-(2, 'zdnghost', '444db57c96106e7f5c8a4941dab449d8', '2024-05-10', 3),
-(3, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', '2024-04-15', 1);
+(1, 'admin', 'e2b420cc9ebe16a0d170dd1b1b22f08c', '2024-04-15', 4),
+(2, 'admin1', 'e2b420cc9ebe16a0d170dd1b1b22f08c', '2024-05-10', 3),
+(3, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', '2024-04-15', 1),
+(4, 'user5', 'e2b420cc9ebe16a0d170dd1b1b22f08c', '2024-09-15', 1),
+(5, 'user6', 'e2b420cc9ebe16a0d170dd1b1b22f08c', '2024-10-01', 1),
+(6, 'dsadsa', 'e2b420cc9ebe16a0d170dd1b1b22f08c', '2024-10-14', 3),
+(7, '2e21', 'e2b420cc9ebe16a0d170dd1b1b22f08c', '2024-10-14', 3),
+(8, 'few', 'e2b420cc9ebe16a0d170dd1b1b22f08c', '2024-10-14', 4),
+(9, 'csak', 'e2b420cc9ebe16a0d170dd1b1b22f08c', '2024-10-14', 2),
+(10, 'sad', 'e2b420cc9ebe16a0d170dd1b1b22f08c', '2024-10-14', 3),
+(11, 'dưok', 'e2b420cc9ebe16a0d170dd1b1b22f08c', '2024-10-14', 2),
+(12, 'ư1w1', 'e2b420cc9ebe16a0d170dd1b1b22f08c', '2024-10-14', 2),
+(13, 'xsx', 'e2b420cc9ebe16a0d170dd1b1b22f08c', '2024-10-14', 3),
+(14, 'admin123', 'e2b420cc9ebe16a0d170dd1b1b22f08c', '2024-10-15', 5),
+(15, 'admin456', 'e2b420cc9ebe16a0d170dd1b1b22f08c', '2024-10-15', 6),
+(16, 'user10', 'e2b420cc9ebe16a0d170dd1b1b22f08c', '2024-10-17', 1);
 
 -- --------------------------------------------------------
 
@@ -364,7 +531,7 @@ INSERT INTO `taikhoan` (`idnguoidung`, `username`, `password`, `ngaytao`, `vaitr
 --
 
 CREATE TABLE `vaitro` (
-  `idvaitro` int NOT NULL,
+  `idvaitro` int(11) NOT NULL,
   `tenvaitro` varchar(50) NOT NULL,
   `mota` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -377,7 +544,9 @@ INSERT INTO `vaitro` (`idvaitro`, `tenvaitro`, `mota`) VALUES
 (1, 'khachhang', 'khach hang'),
 (2, 'default', 'role mac dinh '),
 (3, 'admin', 'admin'),
-(4, 'supplyer', 'quản lý nhập kho');
+(4, '12345', 'quản lý nhập kho'),
+(5, 'no edit', ''),
+(6, 'admin456', 'no1234');
 
 -- --------------------------------------------------------
 
@@ -386,8 +555,8 @@ INSERT INTO `vaitro` (`idvaitro`, `tenvaitro`, `mota`) VALUES
 --
 
 CREATE TABLE `yeuthich` (
-  `idsanpham` int NOT NULL,
-  `idnguoidung` int NOT NULL
+  `idsanpham` int(11) NOT NULL,
+  `idnguoidung` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -505,8 +674,8 @@ ALTER TABLE `yeuthich`
 -- Constraints for table `chitiethoadon`
 --
 ALTER TABLE `chitiethoadon`
-  ADD CONSTRAINT `consthdsanpham` FOREIGN KEY (`idsanpham`,`idmau`) REFERENCES `sanpham` (`idsanpham`, `idmau`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `consthoadon` FOREIGN KEY (`idhoadon`) REFERENCES `hoadon` (`idhoadon`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `consthdsanpham` FOREIGN KEY (`idsanpham`,`idmau`) REFERENCES `sanpham` (`idsanpham`, `idmau`),
+  ADD CONSTRAINT `consthoadon` FOREIGN KEY (`idhoadon`) REFERENCES `hoadon` (`idhoadon`);
 
 --
 -- Constraints for table `chitietphieunhap`
@@ -520,8 +689,8 @@ ALTER TABLE `chitietphieunhap`
 -- Constraints for table `giohang`
 --
 ALTER TABLE `giohang`
-  ADD CONSTRAINT `constsp_mau` FOREIGN KEY (`idmau`,`idsanpham`) REFERENCES `sanpham` (`idmau`, `idsanpham`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `cosntnguoidung` FOREIGN KEY (`idnguoidung`) REFERENCES `nguoidung` (`idnguoidung`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `constsp_mau` FOREIGN KEY (`idmau`,`idsanpham`) REFERENCES `sanpham` (`idmau`, `idsanpham`),
+  ADD CONSTRAINT `cosntnguoidung` FOREIGN KEY (`idnguoidung`) REFERENCES `nguoidung` (`idnguoidung`);
 
 --
 -- Constraints for table `hoadon`
@@ -534,7 +703,7 @@ ALTER TABLE `hoadon`
 -- Constraints for table `nguoidung`
 --
 ALTER TABLE `nguoidung`
-  ADD CONSTRAINT `nguoidung_ibfk_1` FOREIGN KEY (`idnguoidung`) REFERENCES `taikhoan` (`idnguoidung`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `nguoidung_ibfk_1` FOREIGN KEY (`idnguoidung`) REFERENCES `taikhoan` (`idnguoidung`);
 
 --
 -- Constraints for table `phieunhap`
@@ -546,29 +715,29 @@ ALTER TABLE `phieunhap`
 -- Constraints for table `quyen`
 --
 ALTER TABLE `quyen`
-  ADD CONSTRAINT `quyen_ibfk_1` FOREIGN KEY (`idvaitro`) REFERENCES `vaitro` (`idvaitro`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `quyen_ibfk_1` FOREIGN KEY (`idvaitro`) REFERENCES `vaitro` (`idvaitro`),
   ADD CONSTRAINT `quyen_ibfk_2` FOREIGN KEY (`idquyen`) REFERENCES `mottaquyen` (`idquyen`);
 
 --
 -- Constraints for table `sanpham`
 --
 ALTER TABLE `sanpham`
-  ADD CONSTRAINT `constloai` FOREIGN KEY (`idloai`) REFERENCES `loai` (`idloai`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `constmau` FOREIGN KEY (`idmau`) REFERENCES `mau` (`idmau`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `constphong` FOREIGN KEY (`idphong`) REFERENCES `phong` (`idphong`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `constloai` FOREIGN KEY (`idloai`) REFERENCES `loai` (`idloai`),
+  ADD CONSTRAINT `constmau` FOREIGN KEY (`idmau`) REFERENCES `mau` (`idmau`),
+  ADD CONSTRAINT `constphong` FOREIGN KEY (`idphong`) REFERENCES `phong` (`idphong`);
 
 --
 -- Constraints for table `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  ADD CONSTRAINT `cosntvaitro` FOREIGN KEY (`vaitro`) REFERENCES `vaitro` (`idvaitro`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `cosntvaitro` FOREIGN KEY (`vaitro`) REFERENCES `vaitro` (`idvaitro`);
 
 --
 -- Constraints for table `yeuthich`
 --
 ALTER TABLE `yeuthich`
-  ADD CONSTRAINT `constyeuthich` FOREIGN KEY (`idnguoidung`) REFERENCES `taikhoan` (`idnguoidung`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `yeuthich_ibfk_1` FOREIGN KEY (`idsanpham`) REFERENCES `sanpham` (`idsanpham`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `constyeuthich` FOREIGN KEY (`idnguoidung`) REFERENCES `taikhoan` (`idnguoidung`),
+  ADD CONSTRAINT `yeuthich_ibfk_1` FOREIGN KEY (`idsanpham`) REFERENCES `sanpham` (`idsanpham`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
