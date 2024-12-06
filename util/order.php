@@ -98,6 +98,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
           echo "Error";
         }
         break;
+    
       case 'updateOrder':
         $orderID = $_GET['orderID'];
         $status = $_GET['status'];

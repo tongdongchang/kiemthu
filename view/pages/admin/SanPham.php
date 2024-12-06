@@ -24,7 +24,7 @@
         <th class="text-center">Tên sản phẩm</th>
         <th class="text-center">Phòng</th>
         <th class="text-center">Loại</th>
-        <th class="text-center">Giá</th>
+        
         <th class="text-center"<?php if(checkCanAccess(4)){?> colspan="2"<?php }?>>Action</th>
       </tr>
     </thead>
@@ -39,7 +39,7 @@
       <td><?=$row["tensanpham"]?></td>     
       <td><?=$row["tenphong"]?></td> 
       <td><?=$row["tenloai"]?></td>
-      <td><?=$row["gia"]?></td>   
+      
       <td><button type="button" class="btn btn-primary" style="height:40px" onclick="ShowChiTietSanPham('<?=$row['idsanpham']?>')">Detail</button></td>
       <?php if(checkCanAccess(4)){?>
         <td><button type="button" class="btn btn-primary" style="height:40px" onclick="itemEditForm('<?=$row['idsanpham']?>')">Edit</button></td>

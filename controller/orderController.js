@@ -105,6 +105,12 @@ const order = async () => {
         if (res != "Success") alert(res);
         else {
           customNotice("fa-solid fa-cart-circle-plus", "Cancel your Order", 1);
+          let cofirmID = document.querySelectorAll('.confirmID');
+          cofirmID.forEach(button =>{
+            if(button.getAttribute('data-id')== orderID){
+              button.style.display = 'none';
+            }
+          });
           ShowMyOrder();
         }
       },
@@ -146,6 +152,7 @@ const order = async () => {
       },
     });
   }
+  
   const deleteOrder=(orderID,idsanpham,idmau)=>{
     $.ajax({
       url: "util/order.php?orderID=" +orderID+"&idsanpham="+idsanpham+"&idmau="+idmau+"&action=deleteOrder",

@@ -4,10 +4,11 @@
     $dp=new DataProvider();
     $id=$_GET['id'];
     $sql='select * from sanpham 
-    join phong on sanpham.idphong=phong.idphong 
-    join loai on sanpham.idloai=loai.idloai
-    join mau on sanpham.idmau=mau.idmau
-    where idsanpham='.$id." and trangthai=1";
+    JOIN phong ON sanpham.idphong = phong.idphong 
+    JOIN loai ON sanpham.idloai = loai.idloai
+    JOIN mau ON sanpham.idmau = mau.idmau 
+    join chitietphieunhap on sanpham.idsanpham = chitietphieunhap.idsanpham and mau.idmau = chitietphieunhap.idmau 
+    where sanpham.idsanpham='.$id.' and sanpham.trangthai=1';
     $result=$dp->excuteQuery($sql);
     $info=$result-> fetch_assoc();
 ?>
@@ -26,27 +27,41 @@
         <div class="col-md-6 col-lg-3">
           <h4 class="product-name"><?=$info['tensanpham']?></h4>
           <div class="informations">
-            <h4 class="text-success fw-bold"><?=$info['gia']?> đ</h4>
+            <h4 id="giashop" class="text-success fw-bold"><?=$info['Gia']*1.45?> đ</h4>
             <p><strong>Type: </strong><?=$info['tenloai']?></p>
             <p><strong>Room: </strong><?=$info['tenphong']?></p>
             <strong>Colors: </strong>
             <div class="colors mt-2">
-              <ul class="list-unstyled list-inline">
-             
-              <li class="list-inline-item">  
-              <div class="button">
-                
-                    <input type="radio" name="color" id="<?=$info['idmau']?>" value="<?=$info['idmau']?>" class="d-none color" checked onclick="loadimg(<?=$id?>,'<?=$info['hinh']?>')">
-                    
-                    <label for="<?=$info['idmau']?>"><?=$info['tenMau']?></label>
-                </div></li>
-                <?php  if ($result-> num_rows > 0){
-        while ($row=$result-> fetch_assoc()) {
+            <ul class="list-unstyled list-inline">
+    <li class="list-inline-item">  
+        <div class="button">
+            <input type="radio" name="color" 
+                   id="<?=$info['idmau']?>" 
+                   value="<?=$info['idmau']?>" 
+                   class="d-none color" 
+                   checked 
+                   onclick="loadimg('<?=$info['Gia']?>', <?=$id?>, '<?=$info['hinh']?>')">
+            <label for="<?=$info['idmau']?>"><?=$info['tenMau']?></label>
+        </div>
+    </li>
 
-          echo '<li class="list-inline-item"><div class="button"><input type="radio" name="color" id="'.$row['idmau'].'" value="'.$row['idmau'].'" class="d-none color" onclick="loadimg('.$id.",'".$row['hinh']."'".');"><label for="'.$row['idmau'].'">'.$row['tenMau'].'</label></div></li>';
+    <?php  
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<li class="list-inline-item">
+                    <div class="button">
+                        <input type="radio" name="color" 
+                               id="'.$row['idmau'].'" 
+                               value="'.$row['idmau'].'" 
+                               class="d-none color" 
+                               onclick="loadimg(\''.$row['Gia'].'\', '.$id.', \''.$row['hinh'].'\')">
+                        <label for="'.$row['idmau'].'">'.$row['tenMau'].'</label>
+                    </div>
+                  </li>';
         }
-      }?>
-              </ul>
+    }
+    ?>
+</ul>
             </div> 
           </div>
           <div class="d-flex gap-1 justify-content-md-start mt-3">
@@ -152,8 +167,10 @@
     </div>
 </div>
 <script>
-  function loadimg(id,name){
+  function loadimg(gia,id,name){
+
     document.getElementById("productimg").src="./data/img/"+id+"/"+name;
+    document.getElementById("giashop").innerText = gia*1.45+" đ"
   };
   function getcurrentColor(){
    let checkboxs=document.getElementsByClassName("color");

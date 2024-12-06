@@ -41,7 +41,7 @@
         <th class="text-center">Số lượng</th>
         <th class="text-center">Đơn giá</th>
         <th class="text-center">Thành Tiền</th>
-        <th class="text-center">Action</th>
+  
       </tr>
     </thead>
     <?php for ($i = 0; $i < count($products); $i++): ?>
@@ -52,13 +52,17 @@
         <td><?=$products[$i]['soluong_hd']?></td>
         <td><?=$products[$i]['Gia']*1.45?></td>
         <td><?=$products[$i]['soluong_tt']?></td>
-        <td><button type="button" class="btn btn-danger" style="height:40px" onclick="deleteOrder(<?=$id?>,<?=$products[$i]['idsanpham']?>,<?=$products[$i]['idmau']?>)" >Delete</button></td>
+        
       </tr>
 
       <?php endfor; ?>
   </table>
   <button type="button" class="btn btn-danger" style="height:40px" onclick="ShowHoaDon()">Back</button>
- <?php if(checkCanAccess(7)&&$info['trangthai']==1){?> <button type="button" class="btn btn-primary" style="height:40px" onclick="confirmOrder(<?=$id?>)">Confirm</button><?php }?>
+ <?php if(checkCanAccess(7)&&$info['trangthai']==1){?> <button type="button" class="btn btn-primary confirmID" data-id ="<?=$id?>" style="height:40px" onclick="confirmOrder(<?=$id?>)">Confirm</button><?php }?>
+ <?php if(checkCanAccess(7)&&$info['trangthai']==1){?> <button type="button" class="btn btn-primary confirmID" data-id ="<?=$id?>" style="height:40px" onclick="cancelOrder(<?=$id?>)">Cancel</button><?php }
+
+ ?>
+
   <?php
 function getInfoOrder($recordID)
 {
