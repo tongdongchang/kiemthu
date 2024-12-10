@@ -17,6 +17,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         break;
     }
     break;
+
   case 'POST':
     switch ($_POST['action']) {
       case 'checkLogin':
@@ -43,6 +44,30 @@ switch ($_SERVER["REQUEST_METHOD"]) {
               }
             }
           }
+        }
+        break;
+      case 'delete':
+        $username = $_POST['user'];
+       $idUser = $dp->getAccountIDByusername($username) -1;
+       $sql1 = "DELETE FROM phieunhap 
+       WHERE idnguoinhap = '" . $idUser . "'";
+       $result1 = $dp->excuteQuery($sql1);
+       $sql1 = "DELETE FROM giohang 
+        WHERE idnguoidung = '" . $idUser . "'";
+        $result2 = $dp->excuteQuery($sql1);
+       $sql1 = "DELETE FROM nguoidung 
+        WHERE idnguoidung = '" . $idUser . "'";
+        $result3 = $dp->excuteQuery($sql1);
+        $sql2 = "DELETE FROM hoadon 
+        WHERE idnguoidung = '" . $idUser . "'";
+        $result4 = $dp->excuteQuery($sql2);
+        $sql = "DELETE FROM taikhoan 
+        WHERE idnguoidung = '" . $idUser . "'";
+        $result5 = $dp->excuteQuery($sql);
+        if ($result1 && $result2 && $result3 && $result4 && $result5) {
+          echo "Success";
+        } else {
+          echo "Error";
         }
         break;
       case 'checkUsernameExist':

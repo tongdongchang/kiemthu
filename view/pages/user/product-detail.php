@@ -7,7 +7,12 @@
     JOIN phong ON sanpham.idphong = phong.idphong 
     JOIN loai ON sanpham.idloai = loai.idloai
     JOIN mau ON sanpham.idmau = mau.idmau 
-    join chitietphieunhap on sanpham.idsanpham = chitietphieunhap.idsanpham and mau.idmau = chitietphieunhap.idmau 
+    join (
+    SELECT * 
+    FROM chitietphieunhap 
+    WHERE soluong > 0
+    GROUP BY idsanpham, idmau
+    ) as ctpn on sanpham.idsanpham = ctpn.idsanpham and mau.idmau = ctpn.idmau 
     where sanpham.idsanpham='.$id.' and sanpham.trangthai=1';
     $result=$dp->excuteQuery($sql);
     $info=$result-> fetch_assoc();

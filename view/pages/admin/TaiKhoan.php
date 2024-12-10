@@ -20,7 +20,7 @@
         <th class="text-center">Họ tên</th>
         <th class="text-center">Email</th>
         <?php if(checkCanAccess(12)){?>
-        <th class="text-center" >Action</th>
+        <th class="text-center" colspan ="2">Action</th>
         <?php }?>
       </tr>
     </thead>
@@ -38,6 +38,7 @@
       <td><?=$row["email"]?></td>
       <?php if(checkCanAccess(12)){?>
       <td><button type="button" class="btn btn-primary" style="height:40px" onclick="editTaiKhoan('<?=$row['username']?>')">Edit</button></td>
+      <td><button type="button" class="btn btn-primary" style="height:40px" onclick="xoataikhoan('<?=$row['username']?>')">Delete</button></td>
         <?php }?>
     </tr>
       <?php

@@ -44,13 +44,26 @@ $dp = new DataProvider();
       ?>
         <div class="col-4 col-md-3 col-lg-2">        
           <div class="product-card card text-black">
-            <a href="javascript:void(0)" onclick="ShowThongTin(<?=$row['idsanpham']?>)" class="link-body-emphasis text-decoration-none">
+              <?php 
+                if($gia['Gia']===0){
+                ?>
+            <a href="javascript:void(0)"  class="link-body-emphasis text-decoration-none">
               <img
               src="./data/img/<?=$row['idsanpham']?>/<?=$image['hinh']?>"
               class="product-img card-img-top img-fluid"
               alt=""
               />
             </a>
+            <?php } else{
+            ?>
+               <a href="javascript:void(0)" onclick="ShowThongTin(<?=$row['idsanpham']?>)" class="link-body-emphasis text-decoration-none">
+              <img
+              src="./data/img/<?=$row['idsanpham']?>/<?=$image['hinh']?>"
+              class="product-img card-img-top img-fluid"
+              alt=""
+              />
+            </a>
+            <?php } ?>
             <div class="card-body p-2">
               <div class="text-center text-break">
                   <h6 class="card-title"><a class="product-name" href="product-detail.php"><?=$row['tensanpham']?></a></h6>

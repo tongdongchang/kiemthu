@@ -128,6 +128,28 @@ function editTaiKhoan(id){
         }
     });
 }
+const xoataikhoan = (username) => {
+    $.ajax({
+      url: "./util/user.php",  // Không cần truyền `?user=...` ở đây
+      type: "POST",            // Đảm bảo là POST
+      data: {                  // Chuyển tham số dưới dạng data
+        user: username,        // Tham số user
+        action: "delete"       // Tham số action cần thiết
+      },
+      success: function (res) {
+        if (res == "Success") {
+            customNotice(
+                " fa-sharp fa-light fa-circle-exclamation",
+                "Đã xóa tài khoản!",
+                3
+              );
+        } else {
+          alert(res);
+        }
+      },
+    });
+};
+
 function editMau(id){
     $.ajax({
         url:"./view/pages/admin/editMau.php",
